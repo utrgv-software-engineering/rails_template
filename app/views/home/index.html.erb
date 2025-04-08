@@ -1,0 +1,34 @@
+<div class="devise-container">
+  <% if user_signed_in? %>
+    <h1>Welcome, <%= current_user.email %></h1>
+    
+    <h2>Your Favorite Songs</h2>
+    <% if @songs.any? %>
+      <ul>
+        <% @songs.each do |song| %>
+          <li><%= song.title %> by <%= song.artist %></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>You haven't added any songs yet.</p>
+    <% end %>
+
+    <h2>Your Playlists</h2>
+    <% if @playlists.any? %>
+      <ul>
+        <% @playlists.each do |playlist| %>
+          <li><%= playlist.name %></li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p>You haven't created any playlists yet.</p>
+    <% end %>
+    
+    <%= button_to "Sign out", destroy_user_session_path, method: :delete, form: { "data-turbo-confirm": "Are you sure you want to sign out?" } %>
+
+  <% else %>
+    <h1>Welcome to the Music App! 🎵</h1>
+    <%= link_to "Login", new_user_session_path, class: "btn btn-primary" %>
+    <%= link_to "Sign up", new_user_registration_path, class: "btn btn-outline-primary" %>
+  <% end %>
+</div>
