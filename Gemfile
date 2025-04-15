@@ -1,5 +1,9 @@
 source "https://rubygems.org"
 
+gem "rspotify"
+
+  gem "dotenv-rails"
+
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 8.0.1"
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
@@ -32,6 +36,8 @@ gem "solid_cable"
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
+gem "devise"
+
 # Deploy this application anywhere as a Docker container [https://kamal-deploy.org]
 gem "kamal", require: false
 
@@ -53,6 +59,7 @@ group :development, :test do
 
   # Use sqlite3 as the database for Active Record
   gem "sqlite3", ">= 2.1"
+
 end
 
 group :production do

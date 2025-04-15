@@ -1,0 +1,29 @@
+<h1>Search Songs</h1>
+
+<%= form_with url: search_songs_path, method: :get do %>
+  <%= label_tag :search, "Search for a song or artist:" %>
+  <%= text_field_tag :search, params[:search] %>
+  <%= submit_tag "Search" %>
+<% end %>
+
+<%= link_to "Back", root_path, class: "btn btn-secondary mt-3" %>
+
+<% if flash[:notice].present? %>
+  <p><%= flash[:notice] %></p>
+<% end %>
+
+<h2>Spotify Search Results</h2>
+
+<h2>Spotify Search Results</h2>
+
+<% if @spotify_songs.present? %>
+  <% @spotify_songs.each do |track| %>
+    <div class="song-result">
+      <p><%= track.name %> by <%= track.artists.first.name %></p>
+    </div>
+  <% end %>
+<% elsif params[:search].present? %>
+  <p>No songs found</p>
+<% end %>
+
+
