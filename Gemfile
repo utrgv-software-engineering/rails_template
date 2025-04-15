@@ -32,6 +32,18 @@ gem "solid_cable"
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
+gem "devise"
+# Use SQLite3 in development and test
+group :development, :test do
+  gem 'sqlite3', '~> 1.6'
+end
+
+# Use PostgreSQL in production
+group :production do
+  gem 'pg'
+end
+
+
 # Deploy this application anywhere as a Docker container [https://kamal-deploy.org]
 gem "kamal", require: false
 
@@ -52,7 +64,7 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
 
   # Use sqlite3 as the database for Active Record
-  gem "sqlite3", ">= 2.1"
+  #gem "sqlite3", ">= 2.1"
 end
 
 group :production do
